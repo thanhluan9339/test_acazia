@@ -42,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto update(String categoryId , UpdateCategoryRequest request) {
         Optional<Category> optional = categoryRepository.findById(categoryId);
-        if (optional.isEmpty()) {
+        if (!optional.isPresent()) {
             throw new NotFoundException("Category không tồn tại");
         }
         Category category = optional.get();
@@ -63,7 +63,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto detail(String categoryId) {
         Optional<Category> optional = categoryRepository.findById(categoryId);
-        if (optional.isEmpty()) {
+        if (!optional.isPresent()) {
             throw new NotFoundException("Category không tồn tại");
         }
         Category category = optional.get();

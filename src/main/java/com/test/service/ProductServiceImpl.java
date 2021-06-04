@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto update(String productId , UpdateProductRequest request) {
         Optional<Product> optional = productRepository.findById(productId);
-        if (optional.isEmpty()) {
+        if (!optional.isPresent()) {
             throw new NotFoundException("Product không tồn tại");
         }
         Product product = optional.get();
@@ -69,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto detail(String productId) {
         Optional<Product> optional = productRepository.findById(productId);
-        if (optional.isEmpty()) {
+        if (!optional.isPresent()) {
             throw new NotFoundException("Product không tồn tại");
         }
         Product product = optional.get();
