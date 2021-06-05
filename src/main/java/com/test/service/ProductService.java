@@ -4,6 +4,7 @@ import com.test.controller.api.request.CreateProductRequest;
 import com.test.controller.api.request.UpdateProductRequest;
 import com.test.dto.CategoryDto;
 import com.test.dto.ProductDto;
+import com.test.dto.TestDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,7 +17,7 @@ public interface ProductService {
 
     Boolean delete(String productId);
 
-    Page<ProductDto> getAllByConditionTest(String categoryName , Pageable pageable);
+    Page<TestDto> getAllByConditionTest(String categoryName , Pageable pageable);
 
     ProductDto detail(String productId);
 }

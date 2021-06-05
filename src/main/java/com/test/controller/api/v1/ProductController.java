@@ -5,6 +5,7 @@ import com.test.controller.api.request.CreateProductRequest;
 import com.test.controller.api.request.UpdateProductRequest;
 import com.test.controller.response.ResponseBodyDto;
 import com.test.dto.ProductDto;
+import com.test.dto.TestDto;
 import com.test.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -92,13 +93,13 @@ public class ProductController {
 
     //Get detail
     @GetMapping(value = "/product-test", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResponseBodyDto<ProductDto>> getAllByConditionTest(
+    public ResponseEntity<ResponseBodyDto<TestDto>> getAllByConditionTest(
             @RequestParam(name = "category_name", required = false) String categoryName ,
             Pageable pageable) {
 
-        Page<ProductDto> page = productService.getAllByConditionTest(categoryName , pageable);
+        Page<TestDto> page = productService.getAllByConditionTest(categoryName , pageable);
 
-        ResponseBodyDto<ProductDto> res = new ResponseBodyDto<ProductDto>(pageable , page , ResponseCodeEnum.R_200 , "OK");
+        ResponseBodyDto<TestDto> res = new ResponseBodyDto<TestDto>(pageable , page , ResponseCodeEnum.R_200 , "OK");
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 }

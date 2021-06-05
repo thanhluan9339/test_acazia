@@ -6,6 +6,7 @@ import com.test.common.mapper.CommonMapper;
 import com.test.controller.api.request.CreateProductRequest;
 import com.test.controller.api.request.UpdateProductRequest;
 import com.test.dto.ProductDto;
+import com.test.dto.TestDto;
 import com.test.model.Product;
 import com.test.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +62,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductDto> getAllByConditionTest(String categoryName , Pageable pageable) {
-        Page<Product> page = productRepository.getAllByConditionTest(categoryName , pageable);
-        return CommonMapper.toPage(page , ProductDto.class , pageable);
+    public Page<TestDto> getAllByConditionTest(String categoryName , Pageable pageable) {
+        Page<TestDto> page = productRepository.getAllByConditionTest(categoryName , pageable);
+        return page;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.test.repository;
 
+import com.test.dto.TestDto;
 import com.test.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +20,8 @@ public interface ProductRepository extends JpaRepository<Product, String> {
     boolean existsByName(String name);
 
     @Query(value =
-            "SELECT * FROM product p LEFT JOIN category c on p.category_tag=c.tag " +
+            "SELECT p.name, p.category_tag as categoryTag , c.name as categoryName, p.price FROM product p LEFT JOIN category c on p.category_tag=c.tag " +
                     " WHERE c.name like %:category_name% " +
                     " ORDER BY p.price DESC , p.name", nativeQuery = true)
-    Page<Product> getAllByConditionTest(@Param("category_name") String categoryName ,Pageable pageable);
+    Page<TestDto> getAllByConditionTest(@Param("category_name") String categoryName , Pageable pageable);
 }
